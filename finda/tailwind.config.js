@@ -1,3 +1,5 @@
+import { color } from './src/lib/color';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx,mdx}'],
@@ -31,6 +33,7 @@ module.exports = {
         'caption-3': ['0.625rem', { lineHeight: 'auto', fontWeight: '600' }],
         'caption-4': ['0.625rem', { lineHeight: 'auto', fontWeight: '400' }],
       },
+      color,
     },
   },
   plugins: [],

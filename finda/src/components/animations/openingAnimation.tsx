@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { color } from '@/lib/color';
+import { theme } from '@/styles/theme';
 
 const texts = ['환경을 살', '지구를 살', '내일을 살'];
 
@@ -30,16 +30,17 @@ export default function OpeningAnimation() {
       if (index < 3) setIndex((prev) => (prev + 1) % 4);
       count++;
 
-      if (count < 3) {
-        setTimeout(autoAnimation, 800);
-        console.log(animationIndex);
+      if (count < 2) {
+        setTimeout(autoAnimation, 500);
+      } else if (count == 2) {
+        setTimeout(autoAnimation, 500);
       } else {
         setAnimationIndex(animationIndex + 1);
         unlockScroll();
       }
     };
 
-    setTimeout(autoAnimation, 1000);
+    setTimeout(autoAnimation, 250);
 
     return () => {
       document.body.style.overflow = '';
@@ -91,7 +92,7 @@ const Text = styled.h1<{ opacity: number }>`
 `;
 
 const Span = styled.span`
-  color: ${color.blue[500]};
+  color: ${theme.color.Web[500]};
 `;
 
 const IntroduceContainer = styled.div``;

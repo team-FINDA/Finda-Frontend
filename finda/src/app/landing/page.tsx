@@ -1,15 +1,22 @@
 'use client';
 
-import OpeningAnimation from '@/components/openingAnimation';
-import PageTransitionAnimation from '@/components/pageTransitionAnimation';
+import OpeningAnimation from '@/components/animations/openingAnimation';
+import PageTransitionAnimation from '@/components/animations/pageTransitionAnimation';
 import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
 
 export default function Main() {
+  const [i, setI] = useState<number>(0);
+
+  useEffect(() => {
+    setTimeout(() => setI(1), 1000);
+  }, []);
+
   return (
     <StickyContainer>
       <Screen>
         <OpeningAnimation />
-        <PageTransitionAnimation />
+        {i == 1 ? <PageTransitionAnimation /> : <></>}
       </Screen>
     </StickyContainer>
   );

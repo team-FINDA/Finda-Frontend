@@ -1,6 +1,7 @@
 {
   "name": "finda",
   "version": "0.1.0",
+  "packageManager": "yarn@4.10.3",
   "private": true,
   "scripts": {
     "dev": "next dev",

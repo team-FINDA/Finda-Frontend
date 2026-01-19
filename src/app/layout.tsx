@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { pretendard } from '../styles/fonts';
-import { Global } from '@emotion/react';
-import { GlobalStyle } from '@/styles/theme';
+import Providers from './providers';
 
 export const metadata: Metadata = {
   title: 'FINDA',
@@ -17,8 +16,7 @@ export default function RootLayout({
   return (
     <html lang='ko' className={pretendard.variable}>
       <body className='font-pretendard'>
-        <Global styles={GlobalStyle} />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

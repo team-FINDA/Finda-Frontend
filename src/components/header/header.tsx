@@ -1,11 +1,12 @@
-import { theme } from '@/styles/theme';
 import styled from '@emotion/styled';
+import { useTheme } from '@emotion/react';
 import { IconPin } from '@tabler/icons-react';
-import PathArrow from '../../../public/pathArrow.svg';
+import PathArrow from '@/assets/pathArrow.svg';
 
 import Link from 'next/link';
 
 const Header = () => {
+  const theme = useTheme();
   return (
     <Container>
       <PathHeader>
@@ -32,19 +33,17 @@ export const Container = styled.div`
 export const PathHeader = styled.div`
   width: 100%;
   padding: 20px 30px;
-  border-bottom: 1px solid ${theme.color.gray[300]};
+  border-bottom: 1px solid ${(props) => props.theme.color.gray[300]};
 `;
 
 export const CurrentText = styled.p`
-  font-size: ${theme.font.Caption[1].fontSize};
-  font-weight: ${theme.font.Caption[1].fontWeight};
-  color: ${theme.color.gray[900]};
+  ${(props) => props.theme.font.Caption[1]};
+  color: ${(props) => props.theme.color.gray[900]};
 `;
 
 export const PastText = styled(Link)`
-  font-size: ${theme.font.Caption[2].fontSize};
-  font-weight: ${theme.font.Caption[2].fontWeight};
-  color: ${theme.color.gray[900]};
+  ${(props) => props.theme.font.Caption[2]};
+  color: ${(props) => props.theme.color.gray[900]};
 `;
 
 export const Path = styled.div`
@@ -60,11 +59,10 @@ export const CurrentHeader = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
-  border-bottom: 1px solid ${theme.color.gray[300]};
+  border-bottom: 1px solid ${(props) => props.theme.color.gray[300]};
 `;
 
 const PageTitle = styled.p`
-  font-size: ${theme.font.SubHeading[2].fontSize};
-  font-weight: ${theme.font.SubHeading[2].fontWeight};
-  color: ${theme.color.gray[900]};
+  ${(props) => props.theme.font.SubHeading[2]};
+  color: ${(props) => props.theme.color.gray[900]};
 `;

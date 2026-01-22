@@ -1,4 +1,3 @@
-import { theme } from '@/styles/theme';
 import {
   IconSmartHome,
   IconBell,
@@ -8,11 +7,12 @@ import {
   IconAdjustmentsAlt,
   IconProps,
 } from '@tabler/icons-react';
-import ProfileIcon from '../../../public/profile.svg';
+import ProfileIcon from '@/assets/profile.svg';
 import styled from '@emotion/styled';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 import Link from 'next/link';
 import Toggle from '../toggle/toggle';
+import { useTheme } from '@emotion/react';
 type tab = {
   label: string;
   path: string;
@@ -48,6 +48,8 @@ const tabs: tab[] = [
 ];
 
 export const Sidebar = () => {
+const theme = useTheme();
+
   return (
     <Container>
       <Head>
@@ -96,24 +98,23 @@ export const Container = styled.div`
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid ${theme.color.gray[300]};
-  background-color: ${theme.color.gray[200]};
+  border-right: 1px solid ${props => props.theme.color.gray[300]};
+  background-color: ${props => props.theme.color.gray[200]};
 `;
 
 export const Head = styled.div`
   width: 100%;
   height: 70px;
   display: flex;
-  border-bottom: 1px solid ${theme.color.gray[300]};
+  border-bottom: 1px solid ${props => props.theme.color.gray[300]};
   align-items: center;
   justify-content: space-between;
   padding: 28px;
 `;
 
 export const GrayCaption1 = styled.p`
-  font-size: ${theme.font.Caption[1].fontSize};
-  font-weight: ${theme.font.Caption[1].fontWeight};
-  color: ${theme.color.gray[600]};
+  ${props => props.theme.font.Caption[1]};
+  color: ${props => props.theme.color.gray[600]};
 `;
 
 export const Main = styled.div`
@@ -130,17 +131,16 @@ export const Tabs = styled.div``;
 
 export const Tab = styled(Link)`
   border-radius: 15px;
-  background-color: ${theme.color.gray[200]};
+  background-color: ${props => props.theme.color.gray[200]};
   width: 100%;
   display: flex;
   gap: 15px;
   padding: 15px;
-  font-size: ${theme.font.Body[3].fontSize};
-  font-weight: ${theme.font.Body[3].fontWeight};
-  color: ${theme.color.gray[900]};
+  ${props => props.theme.font.Body[3]};
+  color: ${props => props.theme.color.gray[900]};
 
   &:hover {
-    background-color: ${theme.color.gray[300]};
+    background-color: ${props => props.theme.color.gray[300]};
   }
 `;
 
@@ -156,7 +156,7 @@ export const Toggles = styled.div`
 export const Footer = styled.div`
   width: 100%;
   margin-top: auto;
-  border-top: 1px solid ${theme.color.gray[300]};
+  border-top: 1px solid ${props => props.theme.color.gray[300]};
   display: flex;
   padding: 20px 30px;
   justify-content: space-between;
@@ -170,7 +170,6 @@ export const ProfileBox = styled.div`
 export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: ${theme.font.Caption[4].fontSize};
-  font-weight: ${theme.font.Caption[4].fontWeight};
-  color: ${theme.color.gray[600]};
+  ${props => props.theme.font.Caption[4]};
+  color: ${props => props.theme.color.gray[600]};
 `;

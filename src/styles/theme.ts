@@ -46,95 +46,102 @@ export const theme = {
   },
   font: {
     Display: {
-      1: {
-        fontSize: '100px',
-        fontWeight: 800,
-      },
-      2: {
-        fontSize: '72px',
-        fontWeight: 800,
-      },
-      3: {
-        fontSize: '60px',
-        fontWeight: 800,
-      },
+      1: css`
+        font-size: 100px;
+        font-weight: 800;
+      `,
+      2: css`
+        font-size: 72px;
+        font-weight: 800;
+      `,
+      3: css`
+        font-size: 60px;
+        font-weight: 800;
+      `,
     },
+
     Heading: {
-      1: {
-        fontSize: '40px',
-        fontWeight: 700,
-      },
-      2: {
-        fontSize: '36px',
-        fontWieght: 700,
-      },
-      3: {
-        fontSize: '32px',
-        fontWeight: 700,
-      },
-      4: {
-        fontSize: '28px',
-        fontWeight: 600,
-      },
-      5: {
-        fontSize: '24px',
-        fontWeight: 400,
-      },
+      1: css`
+        font-size: 40px;
+        font-weight: 700;
+      `,
+      2: css`
+        font-size: 36px;
+        font-weight: 700;
+      `,
+      3: css`
+        font-size: 32px;
+        font-weight: 700;
+      `,
+      4: css`
+        font-size: 28px;
+        font-weight: 600;
+      `,
+      5: css`
+        font-size: 24px;
+        font-weight: 400;
+      `,
     },
+
     SubHeading: {
-      1: {
-        fontSize: '32px',
-        fontWeight: 600,
-      },
-      2: {
-        fontSize: '20px',
-        fontWeight: 600,
-      },
+      1: css`
+        font-size: 32px;
+        font-weight: 600;
+      `,
+      2: css`
+        font-size: 20px;
+        font-weight: 600;
+      `,
     },
+
     Body: {
-      1: {
-        fontSize: '16px',
-        fontWeight: 600,
-      },
-      2: {
-        fontSize: '16px',
-        fontWeight: 400,
-      },
-      3: {
-        fontSize: '14px',
-        fontWeight: 600,
-      },
-      4: {
-        fontSize: '14px',
-        fontWeight: 500,
-      },
+      1: css`
+        font-size: 16px;
+        font-weight: 600;
+      `,
+      2: css`
+        font-size: 16px;
+        font-weight: 400;
+      `,
+      3: css`
+        font-size: 14px;
+        font-weight: 600;
+      `,
+      4: css`
+        font-size: 14px;
+        font-weight: 500;
+      `,
     },
+
     Caption: {
-      1: {
-        fontSize: '12px',
-        fontWeight: 600,
-      },
-      2: {
-        fontSize: '12px',
-        fontWeight: 400,
-      },
-      3: {
-        fontSize: '10px',
-        fontWeight: 600,
-      },
-      4: {
-        fontSize: '10px',
-        fontWeight: 400,
-      },
+      1: css`
+        font-size: 12px;
+        font-weight: 600;
+      `,
+      2: css`
+        font-size: 12px;
+        font-weight: 400;
+      `,
+      3: css`
+        font-size: 10px;
+        font-weight: 600;
+      `,
+      4: css`
+        font-size: 10px;
+        font-weight: 400;
+      `,
     },
+
     Button: {
-      1: {
-        fontSize: '18px',
-        fontWeight: 600,
-      },
+      1: css`
+        font-size: 18px;
+        font-weight: 600;
+      `,
     },
   },
-};
+} as const;
+
+export type Theme = typeof theme;
 
 export const GlobalStyle = css`
   *,

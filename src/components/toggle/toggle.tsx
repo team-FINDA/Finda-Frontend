@@ -1,4 +1,4 @@
-import { theme } from '@/styles/theme';
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IconChevronDown, IconFish } from '@tabler/icons-react';
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const Toggle = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const theme = useTheme();
 
   const listItems = [
     {
@@ -53,9 +54,8 @@ export const Container = styled.div`
 export const ButtonBox = styled.div`
   width: fit-content;
   display: flex;
-  font-size: ${theme.font.Caption[1].fontSize};
-  font-weight: ${theme.font.Caption[1].fontWeight};
-  color: ${theme.color.gray[600]};
+  color: ${(props) => props.theme.color.gray[600]};
+  ${(props) => props.theme.font.Caption[1]};
   gap: 10px;
   align-items: center;
   cursor: pointer;
@@ -85,15 +85,14 @@ export const List = styled.div<{ isOpen: boolean }>`
 
 export const ListItem = styled(Link)`
   width: 100%;
-  font-size: ${theme.font.Body[4].fontSize};
-  font-weight: ${theme.font.Body[4].fontWeight};
-  color: ${theme.color.gray[900]};
+  ${(props) => props.theme.font.Body[4]};
+  color: ${(props) => props.theme.color.gray[900]};
   padding: 15px 10px;
   display: flex;
   gap: 6px;
   align-items: center;
 
   &:not(:first-child) {
-    border-top: 1px solid ${theme.color.gray[300]};
+    border-top: 1px solid ${(props) => props.theme.color.gray[300]};
   }
 `;

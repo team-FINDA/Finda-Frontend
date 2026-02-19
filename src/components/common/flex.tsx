@@ -63,6 +63,8 @@ export const Flex = forwardRef(
   }
 );
 
+Flex.displayName = 'Flex';
+
 const StyledFlex = styled.div<StyleProps>`
   position: ${({ $position }) => $position};
   display: flex;

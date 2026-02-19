@@ -8,8 +8,8 @@ interface Props {
   Icon: ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>;
   direction?: 'column' | 'row';
   gap?: number;
-  justify?: 'center' | 'felx-end' | 'space-around';
-  align?: 'center' | 'felx-end';
+  justify?: 'center' | 'flex-end' | 'space-around';
+  align?: 'center' | 'flex-end';
   grow?: boolean;
   padding?: string;
 }
@@ -30,7 +30,7 @@ const BasicSection = ({ title, children, Icon, direction, gap, justify, align, g
 
 export default BasicSection;
 
-const Container = styled.article<{ grow: boolean }>`
+const Container = styled.section<{ grow: boolean }>`
   flex: ${(props) => (props.grow ? '1' : '0 0 auto')};
   display: flex;
   flex-direction: column;
@@ -40,8 +40,8 @@ const Container = styled.article<{ grow: boolean }>`
 const ContentBox = styled.article<{
   direction?: 'column' | 'row';
   gap?: number;
-  justify?: 'center' | 'felx-end' | 'space-around';
-  align?: 'center' | 'felx-end';
+  justify?: 'center' | 'flex-end' | 'space-around';
+  align?: 'center' | 'flex-end';
   grow?: boolean;
   padding?: string;
 }>`

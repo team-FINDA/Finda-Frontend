@@ -81,11 +81,7 @@ const page = () => {
           padding='30px'
         >
           <Flex direction='column' gap={15}>
-            <AttendancePieChart
-              data={attendancePieData}
-              title='봉사 참석률'
-              subtitle='( 2025년 12월 31일 )'
-            />
+            <AttendancePieChart data={attendancePieData} title='봉사 참석률' subtitle='( 2025년 12월 31일 )' />
           </Flex>
           <Flex gap={15} direction='column'>
             <AttendanceAreaChart data={attendanceMockData} title='환경지킴이 출석률' />
@@ -95,7 +91,7 @@ const page = () => {
           <ListTable
             columns={['#', '봉사활동', '시작일', '종료일']}
             rows={noticeRows.map((x, i) => ({
-              id: i,
+              id: x.href,
               href: x.href,
               cells: [`#${i + 1}`, x.title, x.start, x.end],
             }))}

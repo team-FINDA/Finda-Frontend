@@ -16,8 +16,8 @@ const Container = styled.article<{ grow: boolean }>`
 const ContentBox = styled.article<{
   direction?: 'column' | 'row';
   gap?: number;
-  justify?: 'center' | 'felx-end' | 'space-around';
-  align?: 'center' | 'felx-end';
+  justify?: 'center' | 'flex-end' | 'space-around';
+  align?: 'center' | 'flex-end';
   grow?: boolean;
   padding?: string;
 }>`

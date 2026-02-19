@@ -91,7 +91,7 @@ const page = () => {
           <ListTable
             columns={['#', '봉사활동', '시작일', '종료일']}
             rows={noticeRows.map((x, i) => ({
-              id: x.href,
+              id: x.title,
               href: x.href,
               cells: [`#${i + 1}`, x.title, x.start, x.end],
             }))}

@@ -18,7 +18,6 @@ const ContentBox = styled.article<{
   gap?: number;
   justify?: 'center' | 'flex-end' | 'space-around';
   align?: 'center' | 'flex-end';
-  grow?: boolean;
   padding?: string;
 }>`
   display: flex;

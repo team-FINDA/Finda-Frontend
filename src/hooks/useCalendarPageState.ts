@@ -38,10 +38,13 @@ const useCalendarPageState = ({
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 
   const workingEvents = draftEvents ?? activityEvents;
-  const monthStart = startOfMonth(currentMonth);
-  const monthEnd = endOfMonth(currentMonth);
+  const currentMonthKey = currentMonth.getTime();
+  const selectedDateKey = selectedDate.getTime();
 
   useEffect(() => {
+    const monthStart = startOfMonth(currentMonth);
+    const monthEnd = endOfMonth(currentMonth);
+
     if (isBefore(selectedDate, monthStart)) {
       setSelectedDate(monthStart);
       return;
@@ -50,7 +53,7 @@ const useCalendarPageState = ({
     if (isAfter(selectedDate, monthEnd)) {
       setSelectedDate(monthEnd);
     }
-  }, [monthEnd, monthStart, selectedDate]);
+  }, [currentMonthKey, selectedDateKey]);
 
   const plannedActivities = useMemo<ScheduleItem[]>(() => {
     const laneMap = getLaneMapForDate(selectedDate, workingEvents);
@@ -115,11 +118,13 @@ const useCalendarPageState = ({
   };
 
   const goPrevDate = () => {
+    const monthStart = startOfMonth(currentMonth);
     if (selectedDate.getTime() <= monthStart.getTime()) return;
     setSelectedDate((prev) => subDays(prev, 1));
   };
 
   const goNextDate = () => {
+    const monthEnd = endOfMonth(currentMonth);
     if (selectedDate.getTime() >= monthEnd.getTime()) return;
     setSelectedDate((prev) => addDays(prev, 1));
   };

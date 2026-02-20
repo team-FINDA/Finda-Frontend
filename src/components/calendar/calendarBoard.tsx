@@ -49,18 +49,20 @@ const CalendarBoard = ({
   const [dragInfo, setDragInfo] = useState<DragInfo | null>(null);
   const [dropTarget, setDropTarget] = useState<DropTarget | null>(null);
 
-  const monthStart = startOfMonth(currentMonth);
-  const monthEnd = endOfMonth(currentMonth);
-  const calendarStart = startOfWeek(monthStart, { weekStartsOn: 0 });
-  const calendarEnd = endOfWeek(monthEnd, { weekStartsOn: 0 });
+  const monthKey = currentMonth.getTime();
 
   const calendarWeeks = useMemo(() => {
+    const monthStart = startOfMonth(currentMonth);
+    const monthEnd = endOfMonth(currentMonth);
+    const calendarStart = startOfWeek(monthStart, { weekStartsOn: 0 });
+    const calendarEnd = endOfWeek(monthEnd, { weekStartsOn: 0 });
     const days = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
+
     return splitByWeek(days).map((daysInWeek) => ({
       days: daysInWeek,
       events: toWeekEvents(daysInWeek, events),
     }));
-  }, [calendarEnd, calendarStart, events]);
+  }, [monthKey, events]);
 
   const handleDropToDate = (targetDate: Date) => {
     if (!editable || !dragInfo) return;

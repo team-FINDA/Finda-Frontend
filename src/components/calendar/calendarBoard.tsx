@@ -170,8 +170,12 @@ const CalendarBoard = ({
                     $editable={editable}
                     $selected={!editable && selectedEventId === event.id}
                     draggable={editable}
-                    onDragStart={() => {
+                    tabIndex={editable ? -1 : 0}
+                    role={editable ? undefined : 'button'}
+                    aria-pressed={!editable && selectedEventId === event.id}
+                    onDragStart={(e) => {
                       if (!editable) return;
+                      e.dataTransfer.setData('text/plain', event.id);
                       setDragInfo({ eventId: event.id, mode: 'move' });
                     }}
                     onDragEnd={() => {
@@ -182,6 +186,13 @@ const CalendarBoard = ({
                       if (editable) return;
                       onSelectEvent?.(event.id);
                     }}
+                    onKeyDown={(e) => {
+                      if (editable) return;
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelectEvent?.(event.id);
+                      }
+                    }}
                   >
                     {editable && (
                       <ResizeHandle
@@ -189,6 +200,7 @@ const CalendarBoard = ({
                         draggable
                         onDragStart={(e) => {
                           e.stopPropagation();
+                          e.dataTransfer.setData('text/plain', event.id);
                           setDragInfo({ eventId: event.id, mode: 'resize-start' });
                         }}
                         onDragEnd={() => {
@@ -204,6 +216,7 @@ const CalendarBoard = ({
                         draggable
                         onDragStart={(e) => {
                           e.stopPropagation();
+                          e.dataTransfer.setData('text/plain', event.id);
                           setDragInfo({ eventId: event.id, mode: 'resize-end' });
                         }}
                         onDragEnd={() => {

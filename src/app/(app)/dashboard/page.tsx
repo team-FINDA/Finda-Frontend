@@ -7,7 +7,8 @@ import ListTable from '@/components/list/listTable';
 import AttendancePieChart from '@/components/dashboard/attendancePieChart';
 import AttendanceAreaChart from '@/components/dashboard/attendanceAreaChart';
 import ActivityPanel, { Activity } from '@/components/dashboard/activityPanel';
-import { Flex } from '@/components/common';
+import { Flex, PageHeaderBar } from '@/components/common';
+import { IconPin } from '@tabler/icons-react';
 
 const page = () => {
   const attendancePieData = [
@@ -69,43 +70,53 @@ const page = () => {
   ];
 
   return (
-    <DividerGroup>
-      <DividerGroup direction='column'>
-        <BasicSection
-          title='통계보드'
-          Icon={IconChartPie2}
-          direction='row'
-          align='center'
-          justify='space-around'
-          grow={false}
-          padding='30px'
-        >
-          <Flex direction='column' gap={15}>
-            <AttendancePieChart data={attendancePieData} title='봉사 참석률' subtitle='( 2025년 12월 31일 )' />
-          </Flex>
-          <Flex gap={15} direction='column'>
-            <AttendanceAreaChart data={attendanceMockData} title='환경지킴이 출석률' />
-          </Flex>
-        </BasicSection>
-        <BasicSection title='공지사항' Icon={IconBell} direction='column'>
-          <ListTable
-            columns={['#', '봉사활동', '시작일', '종료일']}
-            rows={noticeRows.map((x, i) => ({
-              id: x.title,
-              href: x.href,
-              cells: [`#${i + 1}`, x.title, x.start, x.end],
-            }))}
-          />
+    <Page>
+      <PageHeaderBar title='대시보드' Icon={IconPin} />
+      <DividerGroup>
+        <DividerGroup direction='column'>
+          <BasicSection
+            title='통계보드'
+            Icon={IconChartPie2}
+            direction='row'
+            align='center'
+            justify='space-around'
+            grow={false}
+            padding='30px'
+          >
+            <Flex direction='column' gap={15}>
+              <AttendancePieChart data={attendancePieData} title='봉사 참석률' subtitle='( 2025년 12월 31일 )' />
+            </Flex>
+            <Flex gap={15} direction='column'>
+              <AttendanceAreaChart data={attendanceMockData} title='환경지킴이 출석률' />
+            </Flex>
+          </BasicSection>
+          <BasicSection title='공지사항' Icon={IconBell} direction='column'>
+            <ListTable
+              columns={['#', '봉사활동', '시작일', '종료일']}
+              rows={noticeRows.map((x, i) => ({
+                id: x.title,
+                href: x.href,
+                cells: [`#${i + 1}`, x.title, x.start, x.end],
+              }))}
+            />
+          </BasicSection>
+        </DividerGroup>
+        <BasicSection title='봉사활동' Icon={IconClipboardText}>
+          <ActivityPanel activities={activities} />
         </BasicSection>
       </DividerGroup>
-      <BasicSection title='봉사활동' Icon={IconClipboardText}>
-        <ActivityPanel activities={activities} />
-      </BasicSection>
-    </DividerGroup>
+    </Page>
   );
 };
 
 export default page;
+
+const Page = styled.div`
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+`;
 
 const DividerGroup = styled.div<{ direction?: 'row' | 'column' }>`
   display: flex;

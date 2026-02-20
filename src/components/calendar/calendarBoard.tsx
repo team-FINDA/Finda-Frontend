@@ -191,6 +191,10 @@ const CalendarBoard = ({
                           e.stopPropagation();
                           setDragInfo({ eventId: event.id, mode: 'resize-start' });
                         }}
+                        onDragEnd={() => {
+                          setDragInfo(null);
+                          setDropTarget(null);
+                        }}
                       />
                     )}
                     <EventLabel>{event.label}</EventLabel>
@@ -201,6 +205,10 @@ const CalendarBoard = ({
                         onDragStart={(e) => {
                           e.stopPropagation();
                           setDragInfo({ eventId: event.id, mode: 'resize-end' });
+                        }}
+                        onDragEnd={() => {
+                          setDragInfo(null);
+                          setDropTarget(null);
                         }}
                       />
                     )}

@@ -124,8 +124,8 @@ const CalendarBoard = ({
             <WeekRow
               key={`week-${weekIndex}`}
               onDragOver={(e) => {
-                e.preventDefault();
                 if (!editable || !dragInfo) return;
+                e.preventDefault();
 
                 const rect = e.currentTarget.getBoundingClientRect();
                 const dayIndex = resolveDayIndexFromPointer(e.clientX, rect.left, rect.width);
@@ -172,7 +172,7 @@ const CalendarBoard = ({
                     draggable={editable}
                     tabIndex={editable ? -1 : 0}
                     role={editable ? undefined : 'button'}
-                    aria-pressed={!editable && selectedEventId === event.id}
+                    aria-pressed={editable ? undefined : selectedEventId === event.id}
                     onDragStart={(e) => {
                       if (!editable) return;
                       e.dataTransfer.setData('text/plain', event.id);
